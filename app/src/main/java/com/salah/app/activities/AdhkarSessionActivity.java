@@ -87,6 +87,9 @@ public class AdhkarSessionActivity extends AppCompatActivity {
             showCurrent();
         });
 
+        // تشغيل الصوت مرة واحدة عند فتح القسم
+        String localUri = getLocalAudioUri();
+        if (localUri != null) AdhkarPlaybackService.play(this, localUri, AdhkarRepository.getCategoryTitle(category));
         showCurrent();
     }
 
@@ -101,10 +104,6 @@ public class AdhkarSessionActivity extends AppCompatActivity {
         txtTarget.setText(getString(R.string.session_target_fmt, d.count));
         progress.setMax(items.size());
         progress.setProgress(idx);
-        // Auto-play audio for current item (via foreground service so it survives backgrounding)
-        // تشغيل الملف المحلي حسب الفئة بدل رابط النت
-        String localUri = getLocalAudioUri();
-        if (localUri != null) AdhkarPlaybackService.play(this, localUri, d.title);
     }
 
     private String getLocalAudioUri() {
@@ -114,6 +113,7 @@ public class AdhkarSessionActivity extends AppCompatActivity {
             case "evening":   return "android.resource://" + pkg + "/" + R.raw.adhkar_evening;
             case "sleep":     return "android.resource://" + pkg + "/" + R.raw.adhkar_sleep;
             case "wakeup":    return "android.resource://" + pkg + "/" + R.raw.adhkar_wakeup;
+            case "afterSalah": return "android.resource://" + pkg + "/" + R.raw.adhkar_after_salah;
             default:          return null;
         }
     }

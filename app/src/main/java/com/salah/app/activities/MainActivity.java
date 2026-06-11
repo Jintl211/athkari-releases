@@ -241,6 +241,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         try { findViewById(R.id.card_iftitah).setOnClickListener(v -> openAdhkar("iftitah")); } catch (Exception ignored) {}
         try { findViewById(R.id.card_sleep).setOnClickListener(v -> startActivity(new Intent(this, SleepAthkarActivity.class))); } catch (Exception ignored) {}
         try { findViewById(R.id.card_mutanawia).setOnClickListener(v -> openAdhkar("mutanawia")); } catch (Exception ignored) {}
+        try { findViewById(R.id.card_audio_duas).setOnClickListener(v -> startActivity(new Intent(this, AudioDuasActivity.class))); } catch (Exception ignored) {}
     }
 
     private void openAdhkar(String category) {
