@@ -446,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private void initSettingsViews() {
         UserSettings s = PreferencesManager.load(this);
 
-        String[] cityNames = {"مكة المكرمة","المدينة المنورة","الرياض","جدة","أبها","تبوك","صنعاء","عدن","المكلا"};
+        String[] cityNames = getResources().getStringArray(R.array.city_names);
         Spinner spCity = findViewById(R.id.spinner_city_settings);
         if (spCity != null) {
             ArrayAdapter<String> a = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cityNames);
@@ -558,16 +558,84 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private Location getSettingsCityLocation(int pos) {
+        String[] names = getResources().getStringArray(R.array.city_names);
+        String name = pos < names.length ? names[pos] : "مكة المكرمة";
         switch (pos) {
-            case 1: return new Location(24.5247,39.5692,"المدينة المنورة","Asia/Riyadh");
-            case 2: return new Location(24.7136,46.6753,"الرياض","Asia/Riyadh");
-            case 3: return new Location(21.4858,39.1925,"جدة","Asia/Riyadh");
-            case 4: return new Location(18.2164,42.5053,"أبها","Asia/Riyadh");
-            case 5: return new Location(28.3998,36.5715,"تبوك","Asia/Riyadh");
-            case 6: return new Location(15.3694,44.1910,"صنعاء","Asia/Aden");
-            case 7: return new Location(12.7797,45.0367,"عدن","Asia/Aden");
-            case 8: return new Location(14.5425,49.1243,"المكلا","Asia/Aden");
-            default: return new Location(21.4225,39.8262,"مكة المكرمة","Asia/Riyadh");
+            case 0:  return new Location(21.4225, 39.8262, name, "Asia/Riyadh");
+            case 1:  return new Location(24.5247, 39.5692, name, "Asia/Riyadh");
+            case 2:  return new Location(24.7136, 46.6753, name, "Asia/Riyadh");
+            case 3:  return new Location(21.4858, 39.1925, name, "Asia/Riyadh");
+            case 4:  return new Location(26.4207, 50.0888, name, "Asia/Riyadh");
+            case 5:  return new Location(26.2172, 50.1971, name, "Asia/Riyadh");
+            case 6:  return new Location(18.2164, 42.5053, name, "Asia/Riyadh");
+            case 7:  return new Location(28.3998, 36.5715, name, "Asia/Riyadh");
+            case 8:  return new Location(26.3292, 43.9697, name, "Asia/Riyadh");
+            case 9:  return new Location(27.5114, 41.7208, name, "Asia/Riyadh");
+            case 10: return new Location(17.4924, 44.1277, name, "Asia/Riyadh");
+            case 11: return new Location(16.8892, 42.5611, name, "Asia/Riyadh");
+            case 12: return new Location(21.2854, 40.4148, name, "Asia/Riyadh");
+            case 13: return new Location(24.4539, 54.3773, name, "Asia/Dubai");
+            case 14: return new Location(25.2048, 55.2708, name, "Asia/Dubai");
+            case 15: return new Location(25.3463, 55.4209, name, "Asia/Dubai");
+            case 16: return new Location(25.4052, 55.5136, name, "Asia/Dubai");
+            case 17: return new Location(25.7895, 55.9432, name, "Asia/Dubai");
+            case 18: return new Location(29.3759, 47.9774, name, "Asia/Kuwait");
+            case 19: return new Location(25.2854, 51.5310, name, "Asia/Qatar");
+            case 20: return new Location(26.2235, 50.5876, name, "Asia/Bahrain");
+            case 21: return new Location(23.5880, 58.3829, name, "Asia/Muscat");
+            case 22: return new Location(17.0151, 54.0924, name, "Asia/Muscat");
+            case 23: return new Location(15.3694, 44.1910, name, "Asia/Aden");
+            case 24: return new Location(12.7797, 45.0367, name, "Asia/Aden");
+            case 25: return new Location(14.5425, 49.1243, name, "Asia/Aden");
+            case 26: return new Location(13.5789, 44.0186, name, "Asia/Aden");
+            case 27: return new Location(33.3152, 44.3661, name, "Asia/Baghdad");
+            case 28: return new Location(30.5085, 47.7835, name, "Asia/Baghdad");
+            case 29: return new Location(36.3350, 43.1189, name, "Asia/Baghdad");
+            case 30: return new Location(36.1901, 44.0091, name, "Asia/Baghdad");
+            case 31: return new Location(33.5138, 36.2765, name, "Asia/Damascus");
+            case 32: return new Location(36.2021, 37.1343, name, "Asia/Damascus");
+            case 33: return new Location(34.7324, 36.7137, name, "Asia/Damascus");
+            case 34: return new Location(33.8886, 35.4955, name, "Asia/Beirut");
+            case 35: return new Location(31.9454, 35.9284, name, "Asia/Amman");
+            case 36: return new Location(32.0853, 36.0880, name, "Asia/Amman");
+            case 37: return new Location(31.7683, 35.2137, name, "Asia/Jerusalem");
+            case 38: return new Location(31.5017, 34.4668, name, "Asia/Gaza");
+            case 39: return new Location(31.9038, 35.2034, name, "Asia/Jerusalem");
+            case 40: return new Location(30.0444, 31.2357, name, "Africa/Cairo");
+            case 41: return new Location(31.2001, 29.9187, name, "Africa/Cairo");
+            case 42: return new Location(30.0131, 31.2089, name, "Africa/Cairo");
+            case 43: return new Location(24.0889, 32.8998, name, "Africa/Cairo");
+            case 44: return new Location(25.6872, 32.6396, name, "Africa/Cairo");
+            case 45: return new Location(32.9011, 13.1800, name, "Africa/Tripoli");
+            case 46: return new Location(32.1194, 20.0868, name, "Africa/Tripoli");
+            case 47: return new Location(36.8190, 10.1658, name, "Africa/Tunis");
+            case 48: return new Location(34.7406, 10.7603, name, "Africa/Tunis");
+            case 49: return new Location(36.7372, 3.0865,  name, "Africa/Algiers");
+            case 50: return new Location(35.6969, -0.6331, name, "Africa/Algiers");
+            case 51: return new Location(33.9716, -6.8498, name, "Africa/Casablanca");
+            case 52: return new Location(33.5731, -7.5898, name, "Africa/Casablanca");
+            case 53: return new Location(31.6295, -7.9811, name, "Africa/Casablanca");
+            case 54: return new Location(34.0181, -5.0078, name, "Africa/Casablanca");
+            case 55: return new Location(18.0735, -15.9582,name, "Africa/Nouakchott");
+            case 56: return new Location(15.5007, 32.5599, name, "Africa/Khartoum");
+            case 57: return new Location(2.0469,  45.3182, name, "Africa/Mogadishu");
+            case 58: return new Location(11.5720, 43.1456, name, "Africa/Djibouti");
+            case 59: return new Location(-11.7022,43.2551, name, "Indian/Comoro");
+            case 60: return new Location(41.0082, 28.9784, name, "Europe/Istanbul");
+            case 61: return new Location(39.9334, 32.8597, name, "Europe/Istanbul");
+            case 62: return new Location(35.6892, 51.3890, name, "Asia/Tehran");
+            case 63: return new Location(34.5553, 69.2075, name, "Asia/Kabul");
+            case 64: return new Location(24.8607, 67.0011, name, "Asia/Karachi");
+            case 65: return new Location(31.5204, 74.3587, name, "Asia/Karachi");
+            case 66: return new Location(33.6844, 73.0479, name, "Asia/Karachi");
+            case 67: return new Location(-6.2088, 106.8456,name, "Asia/Jakarta");
+            case 68: return new Location(3.1390,  101.6869,name, "Asia/Kuala_Lumpur");
+            case 69: return new Location(51.5074, -0.1278, name, "Europe/London");
+            case 70: return new Location(48.8566, 2.3522,  name, "Europe/Paris");
+            case 71: return new Location(52.5200, 13.4050, name, "Europe/Berlin");
+            case 72: return new Location(40.7128, -74.0060,name, "America/New_York");
+            case 73: return new Location(34.0522, -118.2437,name,"America/Los_Angeles");
+            default: return new Location(21.4225, 39.8262, "مكة المكرمة", "Asia/Riyadh");
         }
     }
     private int settingsIndexForMethod(String id) {

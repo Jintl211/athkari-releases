@@ -3,6 +3,13 @@
     <string-array name="calc_method_labels">
         <item>أم القرى (السعودية)</item>
         <item>رابطة العالم الإسلامي</item>
+        <item>الهيئة المصرية</item>
+        <item>كراتشي (باكستان)</item>
+        <item>دبي</item>
+        <item>قطر</item>
+        <item>الكويت</item>
+        <item>أمريكا الشمالية</item>
+        <item>لجنة رؤية الهلال</item>
     </string-array>
     <string-array name="madhab_labels">
         <item>الشافعي (الجمهور)</item>
@@ -17,5 +24,113 @@
         <item>أذان بروناي</item>
         <item>مشاري العفاسي</item>
         <item>أذان آخر</item>
+    </string-array>
+    <string-array name="city_names">
+        <!-- السعودية -->
+        <item>مكة المكرمة</item>
+        <item>المدينة المنورة</item>
+        <item>الرياض</item>
+        <item>جدة</item>
+        <item>الدمام</item>
+        <item>الخبر</item>
+        <item>أبها</item>
+        <item>تبوك</item>
+        <item>بريدة</item>
+        <item>حائل</item>
+        <item>نجران</item>
+        <item>جازان</item>
+        <item>الطائف</item>
+        <!-- الإمارات -->
+        <item>أبوظبي</item>
+        <item>دبي</item>
+        <item>الشارقة</item>
+        <item>عجمان</item>
+        <item>رأس الخيمة</item>
+        <!-- الكويت -->
+        <item>الكويت</item>
+        <!-- قطر -->
+        <item>الدوحة</item>
+        <!-- البحرين -->
+        <item>المنامة</item>
+        <!-- عُمان -->
+        <item>مسقط</item>
+        <item>صلالة</item>
+        <!-- اليمن -->
+        <item>صنعاء</item>
+        <item>عدن</item>
+        <item>المكلا</item>
+        <item>تعز</item>
+        <!-- العراق -->
+        <item>بغداد</item>
+        <item>البصرة</item>
+        <item>الموصل</item>
+        <item>أربيل</item>
+        <!-- سوريا -->
+        <item>دمشق</item>
+        <item>حلب</item>
+        <item>حمص</item>
+        <!-- لبنان -->
+        <item>بيروت</item>
+        <!-- الأردن -->
+        <item>عمّان</item>
+        <item>الزرقاء</item>
+        <!-- فلسطين -->
+        <item>القدس</item>
+        <item>غزة</item>
+        <item>رام الله</item>
+        <!-- مصر -->
+        <item>القاهرة</item>
+        <item>الإسكندرية</item>
+        <item>الجيزة</item>
+        <item>أسوان</item>
+        <item>الأقصر</item>
+        <!-- ليبيا -->
+        <item>طرابلس</item>
+        <item>بنغازي</item>
+        <!-- تونس -->
+        <item>تونس</item>
+        <item>صفاقس</item>
+        <!-- الجزائر -->
+        <item>الجزائر</item>
+        <item>وهران</item>
+        <!-- المغرب -->
+        <item>الرباط</item>
+        <item>الدار البيضاء</item>
+        <item>مراكش</item>
+        <item>فاس</item>
+        <!-- موريتانيا -->
+        <item>نواكشوط</item>
+        <!-- السودان -->
+        <item>الخرطوم</item>
+        <!-- الصومال -->
+        <item>مقديشو</item>
+        <!-- جيبوتي -->
+        <item>جيبوتي</item>
+        <!-- جزر القمر -->
+        <item>موروني</item>
+        <!-- تركيا -->
+        <item>إسطنبول</item>
+        <item>أنقرة</item>
+        <!-- إيران -->
+        <item>طهران</item>
+        <!-- أفغانستان -->
+        <item>كابول</item>
+        <!-- باكستان -->
+        <item>كراتشي</item>
+        <item>لاهور</item>
+        <item>إسلام آباد</item>
+        <!-- إندونيسيا -->
+        <item>جاكرتا</item>
+        <!-- ماليزيا -->
+        <item>كوالالمبور</item>
+        <!-- المملكة المتحدة -->
+        <item>لندن</item>
+        <!-- فرنسا -->
+        <item>باريس</item>
+        <!-- ألمانيا -->
+        <item>برلين</item>
+        <!-- أمريكا -->
+        <item>نيويورك</item>
+        <item>لوس أنجلوس</item>
     </string-array>
 </resources>
