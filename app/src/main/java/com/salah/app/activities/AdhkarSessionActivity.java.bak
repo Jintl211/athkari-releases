@@ -114,7 +114,7 @@ public class AdhkarSessionActivity extends AppCompatActivity {
             case "evening":   return "android.resource://" + pkg + "/" + R.raw.adhkar_evening;
             case "sleep":     return "android.resource://" + pkg + "/" + R.raw.adhkar_sleep;
             case "wakeup":    return "android.resource://" + pkg + "/" + R.raw.adhkar_wakeup;
-            default:          return null;
+            default:          return "android.resource://" + pkg + "/" + R.raw.adhkar_morning;
         }
     }
 
