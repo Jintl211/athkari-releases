@@ -45,14 +45,29 @@ public class AudioDownloader {
         return new File(audioDir(ctx), name);
     }
 
-    /** Returns either local path (if downloaded) or original URL. */
+    /** Returns either local path (if downloaded) or raw resource URI. */
     public static String resolvePlaybackUri(Context ctx, String url) {
         if (url == null || url.isEmpty()) return null;
+        // أولاً: تحقق من الملف المحمل محلياً
         File f = localFileFor(ctx, url);
         if (f != null && f.exists() && f.length() > 1024) {
             return f.getAbsolutePath();
         }
-        return url;
+        // ثانياً: استخدم ملفات raw المدمجة حسب نوع الذكر
+        if (url.contains("morning") || url.contains("sabah")) {
+            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_morning;
+        }
+        if (url.contains("evening") || url.contains("masa")) {
+            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_evening;
+        }
+        if (url.contains("sleep") || url.contains("nawm")) {
+            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_sleep;
+        }
+        if (url.contains("wakeup") || url.contains("istiqaz")) {
+            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_wakeup;
+        }
+        // إذا ما نطبق أي حالة، استخدم أذكار الصباح كافتراضي
+        return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_morning;
     }
 
     /** Collects every audioUrl from every category in adhkar.json + adhan voices. */

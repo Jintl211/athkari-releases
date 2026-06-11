@@ -102,7 +102,20 @@ public class AdhkarSessionActivity extends AppCompatActivity {
         progress.setMax(items.size());
         progress.setProgress(idx);
         // Auto-play audio for current item (via foreground service so it survives backgrounding)
-        AdhkarPlaybackService.play(this, d.audioUrl, d.title);
+        // تشغيل الملف المحلي حسب الفئة بدل رابط النت
+        String localUri = getLocalAudioUri();
+        if (localUri != null) AdhkarPlaybackService.play(this, localUri, d.title);
+    }
+
+    private String getLocalAudioUri() {
+        String pkg = getPackageName();
+        switch (category == null ? "" : category) {
+            case "morning":   return "android.resource://" + pkg + "/" + R.raw.adhkar_morning;
+            case "evening":   return "android.resource://" + pkg + "/" + R.raw.adhkar_evening;
+            case "sleep":     return "android.resource://" + pkg + "/" + R.raw.adhkar_sleep;
+            case "wakeup":    return "android.resource://" + pkg + "/" + R.raw.adhkar_wakeup;
+            default:          return "android.resource://" + pkg + "/" + R.raw.adhkar_morning;
+        }
     }
 
     private void onTap() {

@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.button.MaterialButton;
 import android.media.MediaPlayer;
 import com.salah.app.R;
+import com.salah.app.utils.UpdateChecker;
 import com.salah.app.models.UserSettings;
 import com.salah.app.utils.AlarmScheduler;
 import com.salah.app.utils.PermissionHelper;
@@ -166,6 +167,10 @@ public class SettingsActivity extends AppCompatActivity {
                 Toast.makeText(this, "تعذر فتح الرابط", Toast.LENGTH_SHORT).show();
             }
         });
+
+        MaterialButton btnCheckUpdate = findViewById(R.id.btn_check_update);
+        if (btnCheckUpdate != null) btnCheckUpdate.setOnClickListener(v ->
+            UpdateChecker.check(this, true));
 
         MaterialButton btnDescription = findViewById(R.id.btn_description);
         if (btnDescription != null) btnDescription.setOnClickListener(v -> {
