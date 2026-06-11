@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="310dp"
+    android:height="310dp"
+    android:viewportWidth="310"
+    android:viewportHeight="310">
+
+    <!-- ===== السهم الذهبي للأعلى - القبلة ===== -->
+    <!-- جسم السهم -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M155,50 L163,148 L155,140 L147,148 Z"/>
+    <!-- وميض السهم -->
+    <path
+        android:fillColor="#F4E29A"
+        android:pathData="M155,50 L158,120 L155,115 Z"/>
+    <!-- رأس السهم مثلث -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M155,42 L163,62 L155,58 L147,62 Z"/>
+
+    <!-- ===== أيقونة الكعبة في رأس السهم ===== -->
+    <!-- الجسم الأسود -->
+    <path
+        android:fillColor="#111122"
+        android:pathData="M144,56 L166,56 L166,82 L144,82 Z"/>
+    <!-- الشريط الذهبي العلوي -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M143,54 L167,54 L167,60 L143,60 Z"/>
+    <!-- الشريط الذهبي الوسطى -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M144,67 L166,67 L166,69 L144,69 Z"/>
+    <!-- الباب الذهبي -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M151,70 L159,70 L159,82 L151,82 Z"/>
+    <!-- تفاصيل الباب -->
+    <path
+        android:fillColor="#111122"
+        android:pathData="M152.5,71.5 L157.5,71.5 L157.5,80 L152.5,80 Z"/>
+    <!-- زخرفة يمين -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M144,62 m0,0 L147,62 L147,65 L144,65 Z"/>
+    <!-- زخرفة يسار -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M163,62 L166,62 L166,65 L163,65 Z"/>
+
+    <!-- ===== السهم الرمادي للأسفل ===== -->
+    <path
+        android:fillColor="#546E7A"
+        android:pathData="M155,260 L163,162 L155,170 L147,162 Z"/>
+    <path
+        android:fillColor="#607D8B"
+        android:pathData="M155,268 L163,252 L155,256 L147,252 Z"/>
+
+    <!-- ===== الدائرة المركزية ===== -->
+    <!-- الحلقة الذهبية الخارجية -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M155,155 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0"/>
+    <!-- الدائرة الداخلية الداكنة -->
+    <path
+        android:fillColor="#0D0D1A"
+        android:pathData="M155,155 m-14,0 a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0"/>
+    <!-- النقطة الذهبية الوسط -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M155,155 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0"/>
+
+</vector>

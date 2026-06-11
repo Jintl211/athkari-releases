@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_app_logo"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✦ أذكاري ✦"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#ffd700"
+            android:fontFamily="@font/amiri"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تطبيق Adhkari رفيقك اليومي في طريق الذكر والعبادة"
+            android:textSize="13sp"
+            android:textColor="#cccccc"
+            android:fontFamily="@font/amiri"
+            android:lineSpacingMultiplier="1.5"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1a2a3a"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="✦  أذكار الصباح والمساء" android:textColor="#ffffff"
+                android:fontFamily="@font/amiri" android:textSize="13sp" android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="✦  أوقات الصلاة الدقيقة" android:textColor="#ffffff"
+                android:fontFamily="@font/amiri" android:textSize="13sp" android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="✦  اتجاه القبلة" android:textColor="#ffffff"
+                android:fontFamily="@font/amiri" android:textSize="13sp" android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="✦  المسبحة الإلكترونية" android:textColor="#ffffff"
+                android:fontFamily="@font/amiri" android:textSize="13sp" android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="✦  القرآن الكريم كامل" android:textColor="#ffffff"
+                android:fontFamily="@font/amiri" android:textSize="13sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="بدون إنترنت  " android:textColor="#ffd700"
+                android:fontFamily="@font/amiri" android:textSize="12sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="•  بدون إعلانات" android:textColor="#ffd700"
+                android:fontFamily="@font/amiri" android:textSize="12sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="القرآن الكريم من هنا 👇"
+            android:textSize="12sp"
+            android:textColor="#aaaaaa"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="https://5l7n0qhp.on.adaptive.ai/"
+            android:textSize="11sp"
+            android:textColor="#ffd700"
+            android:autoLink="web"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اللهم اجعله في ميزان حسناتنا"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:fontFamily="@font/amiri"/>
+
+    </LinearLayout>
+</ScrollView>

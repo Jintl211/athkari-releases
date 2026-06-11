@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App identity -->
+    <string name="app_name">Adhkari</string>
+
+    <!-- Main screen -->
+    <string name="city_unknown">موقع غير معروف</string>
+    <string name="next_prayer_fmt">الصلاة القادمة: %1$s</string>
+    <string name="btn_refresh">تحديث الموقع</string>
+    <string name="btn_settings">الإعدادات</string>
+
+    <!-- Welcome -->
+    <string name="welcome_message">بوابتك الرقمية للمحافظة على أوراد الصباح والمساء، الأذكار المنوعة، ومواقيت الصلاة بدقة فائقة وعمل كامل بدون إنترنت. (صدقة جارية عن أمواتنا وأموات المسلمين)</string>
+    <string name="charity_message">صدقة جارية عن أمواتنا وأموات المسلمين</string>
+    <string name="offline_message">دون الحاجة للاتصال بالإنترنت</string>
+    <string name="btn_skip_download"> متابعة </string>
+
+    <!-- Tabs -->
+    <string name="tab_morning">أذكار الصباح</string>
+    <string name="tab_evening">أذكار المساء</string>
+    <string name="tab_after_salah">أذكار بعد الصلاة</string>
+    <string name="tab_wakeup">أذكار الاستيقاظ</string>
+    <string name="tab_iftitah">دعاء الاستفتاح</string>
+    <string name="tab_duas">أدعية متنوعة</string>
+    <string name="tab_tasbih">المسبحة</string>
+    <string name="tab_settings">الإعدادات</string>
+    <string name="tab_sleep">أذكار النوم</string>
+
+    <!-- Session -->
+    <string name="session_position_fmt">%1$d / %2$d</string>
+    <string name="session_target_fmt">الهدف: %1$d مرة</string>
+
+    <!-- Settings -->
+    <string name="title_settings">الإعدادات</string>
+    <string name="lbl_method">طريقة الحساب</string>
+    <string name="lbl_madhab">المذهب</string>
+    <string name="lbl_adhan_voice">صوت الأذان</string>
+    <string name="sw_adhan">تشغيل الأذان</string>
+    <string name="sw_morning">تذكير أذكار الصباح</string>
+    <string name="sw_evening">تذكير أذكار المساء</string>
+    <string name="sw_sleep">تذكير أذكار النوم</string>
+    <string name="sw_vibrate">اهتزاز</string>
+    <string name="sw_dark">الوضع الليلي</string>
+    <string name="btn_save">حفظ</string>
+    <string name="lbl_reliability">موثوقية التنبيهات</string>
+    <string name="exact_alarm_needed">التنبيهات الدقيقة مطلوبة لأوقات الصلاة</string>
+    <string name="exact_alarm_required">يحتاج إذن التنبيه الدقيق</string>
+    <string name="btn_exact_alarm">تفعيل التنبيه الدقيق</string>
+    <string name="btn_battery">استثناء من توفير البطارية</string>
+    <string name="btn_reset">إعادة تعيين</string>
+
+    <!-- Notifications -->
+    <string name="channel_prayer_name">إشعارات الصلاة</string>
+    <string name="channel_athkar_name">تذكير الأذكار</string>
+    <string name="notif_prayer_title">حان وقت الصلاة</string>
+    <string name="notif_prayer_text_fmt">حان وقت صلاة %1$s</string>
+    <string name="notif_morning_athkar_title">أذكار الصباح</string>
+    <string name="notif_morning_athkar_text">لا تنس أذكار الصباح</string>
+    <string name="notif_evening_athkar_title">أذكار المساء</string>
+    <string name="notif_evening_athkar_text">لا تنس أذكار المساء</string>
+    <string name="notif_sleep_title">أذكار النوم</string>
+    <string name="notif_sleep_text">حان وقت أذكار النوم</string>
+
+    <!-- Post Adhan -->
+    <string name="post_adhan_title">بعد الأذان</string>
+    <string name="btn_close">إغلاق</string>
+
+    <!-- Toasts -->
+    <string name="toast_saved">تم الحفظ</string>
+    <string name="notif_playing_adhkar">جاري تشغيل الأذكار</string>
+    <string name="notif_action_stop">إيقاف</string>
+    <string name="exact_alarm_ok">التنبيهات الدقيقة مفعّلة</string>
+    <string name="dua_after_adhan">اللهم رب هذه الدعوة التامة</string>
+    <string name="welcome_preparing">جارٍ التحضير...</string>
+    <string name="welcome_pct_fmt">%1$d%%</string>
+    <string name="welcome_dl_fmt">تحميل %1$d من %2$d</string>
+    <string name="welcome_done_fmt">اكتمل: %1$d، فشل: %2$d</string>
+    <string name="welcome_enter_app">دخول التطبيق</string>
+    <string name="session_completed_fmt">أحسنت! أتممت %1$s</string>
+    <string name="tasbih_completed">أحسنت! أتممت التسبيح</string>
+    <string name="tasbih_target_fmt">الهدف: %1$d</string>
+    <string name="tasbih_stage_fmt">المرحلة %1$d من %2$d</string>
+</resources>
