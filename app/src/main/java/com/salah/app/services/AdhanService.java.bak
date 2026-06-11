@@ -28,7 +28,6 @@ public class AdhanService extends Service {
     public static final String ACTION_STOP = "com.salah.app.STOP_ADHAN";
 
     private MediaPlayer player;
-    private String prayerId;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -42,7 +41,6 @@ public class AdhanService extends Service {
         String prayerAr = intent != null
             ? intent.getStringExtra(AlarmScheduler.EXTRA_PRAYER_NAME_AR) : null;
         if (prayerAr == null) prayerAr = "الصلاة";
-        prayerId = intent != null ? intent.getStringExtra(AlarmScheduler.EXTRA_PRAYER_ID) : null;
 
         // Build stop action PendingIntent
         Intent stopI = new Intent(this, AdhanService.class).setAction(ACTION_STOP);
@@ -51,6 +49,8 @@ public class AdhanService extends Service {
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
+        String prayerId = intent != null
+            ? intent.getStringExtra(AlarmScheduler.EXTRA_PRAYER_ID) : null;
         android.app.Notification notif = NotificationHelper.buildPrayerNotification(
             this, prayerAr, prayerId, stopPI);
 
@@ -69,20 +69,14 @@ public class AdhanService extends Service {
     private void startPlayback() {
         try {
             UserSettings s = PreferencesManager.load(this);
-            // الفجر دائماً يشتغل أذان الحرم المكي (فيه الصلاة خير من النوم)
-            boolean isFajr = "fajr".equalsIgnoreCase(prayerId);
             int resId = 0;
-            if (isFajr) {
-                resId = R.raw.adhan_haram_makki;
-            } else {
-                if (s.selectedAdhanFile != null && !s.selectedAdhanFile.isEmpty()) {
-                    resId = getResources().getIdentifier(
-                        s.selectedAdhanFile, "raw", getPackageName());
-                }
-                if (resId == 0) {
-                    Log.w(TAG, "Adhan file not found [" + s.selectedAdhanFile + "] -> fallback to madinah");
-                    resId = R.raw.adhan_madinah;
-                }
+            if (s.selectedAdhanFile != null && !s.selectedAdhanFile.isEmpty()) {
+                resId = getResources().getIdentifier(
+                    s.selectedAdhanFile, "raw", getPackageName());
+            }
+            if (resId == 0) {
+                Log.w(TAG, "Adhan file not found [" + s.selectedAdhanFile + "] -> fallback to madinah");
+                resId = R.raw.adhan_madinah;
             }
             player = MediaPlayer.create(this, resId);
             if (player == null) {

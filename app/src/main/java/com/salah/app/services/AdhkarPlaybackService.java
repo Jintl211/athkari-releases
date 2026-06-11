@@ -73,6 +73,11 @@ public class AdhkarPlaybackService extends Service {
                 .setUsage(AudioAttributes.USAGE_MEDIA)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
                 .build());
+            player.setOnCompletionListener(mp -> { release(); stopSelf(); });
+            player.setOnErrorListener((mp, what, extra) -> {
+                Log.e(TAG, "MediaPlayer error " + what + "/" + extra + " url=" + url);
+                release(); stopSelf(); return true;
+            });
             if (uri.startsWith("android.resource://")) {
                 // ملف محلي - نستخدم setDataSource مع Uri
                 player.setDataSource(this, android.net.Uri.parse(uri));
@@ -84,11 +89,6 @@ public class AdhkarPlaybackService extends Service {
                 player.setOnPreparedListener(MediaPlayer::start);
                 player.prepareAsync();
             }
-            player.setOnCompletionListener(mp -> { release(); stopSelf(); });
-            player.setOnErrorListener((mp, what, extra) -> {
-                Log.e(TAG, "MediaPlayer error " + what + "/" + extra + " url=" + url);
-                release(); stopSelf(); return true;
-            });
         } catch (Throwable t) {
             Log.e(TAG, "playUrl failed: " + url, t);
             release(); stopSelf();

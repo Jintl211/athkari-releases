@@ -131,5 +131,6 @@
                 android:resource="@xml/file_paths"/>
         </provider>
 
+            <activity android:name=".activities.AudioDuasActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

@@ -10,8 +10,8 @@ public class AzkarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        PreferencesManager.applyTheme(this);
         super.onCreate(savedInstanceState);
+        PreferencesManager.applyTheme(this);
         setContentView(R.layout.activity_azkar);
 
         findViewById(R.id.card_morning).setOnClickListener(v -> openAdhkar("morning"));
@@ -21,6 +21,8 @@ public class AzkarActivity extends AppCompatActivity {
         findViewById(R.id.card_duas).setOnClickListener(v -> openAdhkar("duas"));
         findViewById(R.id.card_iftitah).setOnClickListener(v -> openAdhkar("iftitah"));
         findViewById(R.id.card_sleep).setOnClickListener(v -> startActivity(new Intent(this, SleepAthkarActivity.class)));
+        findViewById(R.id.card_mutanawia).setOnClickListener(v -> openAdhkar("mutanawia"));
+        findViewById(R.id.card_audio_duas).setOnClickListener(v -> startActivity(new Intent(this, AudioDuasActivity.class)));
     }
 
     private void openAdhkar(String category) {
