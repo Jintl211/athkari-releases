@@ -67,20 +67,28 @@ public class AdhkarPlaybackService extends Service {
     private void playUrl(String url) {
         release();
         try {
-            String uri = AudioDownloader.resolvePlaybackUri(this, url);
+            String uri = url; // نستخدم الرابط مباشرة (android.resource://)
             player = new MediaPlayer();
             player.setAudioAttributes(new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_MEDIA)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
                 .build());
-            player.setDataSource(uri);
-            player.setOnPreparedListener(MediaPlayer::start);
+            if (uri.startsWith("android.resource://")) {
+                // ملف محلي - نستخدم setDataSource مع Uri
+                player.setDataSource(this, android.net.Uri.parse(uri));
+                player.prepare();
+                player.start();
+            } else {
+                // رابط نت
+                player.setDataSource(uri);
+                player.setOnPreparedListener(MediaPlayer::start);
+                player.prepareAsync();
+            }
             player.setOnCompletionListener(mp -> { release(); stopSelf(); });
             player.setOnErrorListener((mp, what, extra) -> {
                 Log.e(TAG, "MediaPlayer error " + what + "/" + extra + " url=" + url);
                 release(); stopSelf(); return true;
             });
-            player.prepareAsync();
         } catch (Throwable t) {
             Log.e(TAG, "playUrl failed: " + url, t);
             release(); stopSelf();

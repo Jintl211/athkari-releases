@@ -144,6 +144,19 @@
         style="@style/Widget.Material3.Button.OutlinedButton"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_check_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="🔄 التحقق من التحديثات"
+        android:textColor="@color/gold"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp"
+        app:cornerRadius="14dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
