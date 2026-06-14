@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1a1a2e">
+
+    <!-- خلفية المسجد -->
+    <ImageView
+        android:id="@+id/bg_mosque"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:alpha="0.3"
+        android:src="@drawable/mosque_background" />
+
+    <!-- طبقة داكنة -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
+    <!-- المحتوى -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <!-- اسم الصلاة -->
+        <TextView
+            android:id="@+id/tv_prayer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="حان وقت صلاة الفجر"
+            android:textColor="#FFD700"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="40dp" />
+
+        <!-- الكلمة الحالية -->
+        <TextView
+            android:id="@+id/tv_adhan_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="الله أكبر الله أكبر"
+            android:textColor="#FFFFFF"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:minHeight="100dp" />
+
+        <!-- السطر التالي -->
+        <TextView
+            android:id="@+id/tv_next_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="أشهد أن لا إله إلا الله"
+            android:textColor="#80FFFFFF"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center" />
+
+        <!-- زر الإيقاف -->
+        <Button
+            android:id="@+id/btn_stop_adhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="إيقاف الأذان"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#E74C3C"
+            android:layout_marginTop="60dp"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="12dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

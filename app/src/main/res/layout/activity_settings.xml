@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:layoutDirection="rtl">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/card_bg"
+        app:titleTextColor="@color/gold"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginVertical="16dp"/>
+
+            <!-- المدينة -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="المدينة"
+                android:textColor="#ffd700"
+                android:textSize="14sp"
+                android:paddingBottom="8dp"/>
+            <Spinner
+                android:id="@+id/spinner_city_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_bg"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- طريقة الحساب -->
+            <TextView style="@style/SectionLabel" android:text="@string/lbl_method"/>
+            <Spinner android:id="@+id/spinner_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_bg"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- المذهب -->
+            <TextView style="@style/SectionLabel" android:text="@string/lbl_madhab"/>
+            <Spinner android:id="@+id/spinner_madhab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_bg"
+                android:layout_marginBottom="16dp"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginVertical="8dp"/>
+
+            <!-- ✅ أذان الصلوات الأربع -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="صوت الأذان"
+                android:textColor="#ffd700"
+                android:textSize="14sp"
+                android:paddingBottom="8dp"/>
+            <Spinner android:id="@+id/spinner_adhan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_bg"
+                android:layout_marginBottom="12dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_preview_adhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶ معاينة أذان الصلوات الأربع"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginVertical="8dp"/>
+
+            <!-- ✅ أذان الفجر منفصل -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="أذان الفجر"
+                android:textColor="#ffd700"
+                android:textSize="14sp"
+                android:paddingBottom="8dp"/>
+            <Spinner android:id="@+id/spinner_fajr_adhan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_bg"
+                android:layout_marginBottom="12dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_preview_fajr_adhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶ معاينة أذان الفجر"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginVertical="8dp"/>
+
+            <!-- المفاتيح -->
+            <Switch android:id="@+id/sw_adhan" style="@style/SettingSwitch"
+                android:text="@string/sw_adhan"/>
+            <Switch android:id="@+id/sw_morning" style="@style/SettingSwitch"
+                android:text="@string/sw_morning"/>
+            <Switch android:id="@+id/sw_evening" style="@style/SettingSwitch"
+                android:text="@string/sw_evening"/>
+            <Switch android:id="@+id/sw_vibrate" style="@style/SettingSwitch"
+                android:text="@string/sw_vibrate"/>
+            <Switch android:id="@+id/sw_dark" style="@style/SettingSwitch"
+                android:text="@string/sw_dark"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginVertical="16dp"/>
+
+            <!-- الصلاحيات -->
+            <TextView style="@style/SectionLabel" android:text="@string/lbl_reliability"/>
+            <TextView android:id="@+id/lbl_exact_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:paddingBottom="6dp"
+                android:text="@string/exact_alarm_needed"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_exact_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/btn_exact_alarm"
+                app:cornerRadius="12dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_battery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_battery"
+                app:cornerRadius="12dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="حول التطبيق"
+        android:textColor="@color/gold"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp"
+        app:cornerRadius="14dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_tiktok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="🎵 للمزيد من المحتوى الديني"
+        android:textColor="@color/gold"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp"
+        app:cornerRadius="14dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_check_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="🔄 التحقق من التحديثات"
+        android:textColor="@color/gold"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp"
+        app:cornerRadius="14dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="نبذة عن التطبيق"
+        android:textColor="@color/gold"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp"
+        app:cornerRadius="14dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:text="@string/btn_save"
+        android:textColor="@color/bg_primary"
+        android:backgroundTint="@color/gold"
+        app:cornerRadius="14dp"/>
+
+</LinearLayout>

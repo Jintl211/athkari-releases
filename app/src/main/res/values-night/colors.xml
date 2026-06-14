@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gold">#D4AF37</color>
+    <color name="gold_light">#F4E29A</color>
+    <!-- وضع الليل - داكن -->
+    <color name="bg_primary">#2D2438</color>
+    <color name="card_bg">#16213E</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#A0A0A0</color>
+    <color name="divider">#0F3460</color>
+    <color name="status_bar">#0F0F23</color>
+    <color name="success_green">#22C55E</color>
+    <color name="danger_red">#EF4444</color>
+</resources>
