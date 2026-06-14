@@ -1,6 +1,6 @@
 {
-  "version": "1.4",
-  "versionCode": 2,
-  "url": "https://github.com/Jintl211/athkari-releases/releases/download/v1.4/Adhkariy.apk",
-  "notes": "إصلاح خطأ التحديثات التلقائية"
+  "version": "1.5",
+  "versionCode": 3,
+  "url": "https://github.com/Jintl211/athkari-releases/releases/download/v1.5/Adhkariy.apk",
+  "notes": "إصلاح مشاكل الأذان والتنبيهات وتحديث رقم الإصدار التلقائي"
 }
