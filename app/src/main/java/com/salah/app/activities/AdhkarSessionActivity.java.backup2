@@ -87,6 +87,9 @@ public class AdhkarSessionActivity extends AppCompatActivity {
             showCurrent();
         });
 
+        // تشغيل الصوت مرة واحدة عند فتح القسم
+        String localUri = getLocalAudioUri();
+        if (localUri != null) AdhkarPlaybackService.play(this, localUri, AdhkarRepository.getCategoryTitle(category));
         showCurrent();
     }
 
@@ -98,46 +101,27 @@ public class AdhkarSessionActivity extends AppCompatActivity {
         txtBody.setText(d.text);
         txtPosition.setText(getString(R.string.session_position_fmt, idx + 1, items.size()));
         txtCounter.setText("0");
-        btnTap.setText("0");
         txtTarget.setText(getString(R.string.session_target_fmt, d.count));
         progress.setMax(items.size());
         progress.setProgress(idx);
-        // تشغيل صوت الذكر الحالي تلقائياً
-        playCurrentDhikrAudio(d);
     }
 
-    private void playCurrentDhikrAudio(DhikrItem d) {
-        int resId = 0;
-        if ("morning".equals(category) || "evening".equals(category)) {
-            int audioIndex = 75 + idx;
-            if (audioIndex <= 98) {
-                String resName = "dhikr_" + audioIndex;
-                resId = getResources().getIdentifier(resName, "raw", getPackageName());
-            }
-        } else if ("iftitah".equals(category)) {
-            int audioIndex = 27 + idx;
-            if (audioIndex <= 32) {
-                String resName = "dhikr_" + audioIndex;
-                resId = getResources().getIdentifier(resName, "raw", getPackageName());
-            }
-        } else if ("afterSalah".equals(category)) {
-            resId = R.raw.adhkar_after_salah;
-        } else if ("sleep".equals(category)) {
-            resId = R.raw.adhkar_sleep;
-        } else if ("wakeup".equals(category)) {
-            resId = R.raw.adhkar_wakeup;
+    private String getLocalAudioUri() {
+        String pkg = getPackageName();
+        switch (category == null ? "" : category) {
+            case "morning":   return "android.resource://" + pkg + "/" + R.raw.adhkar_morning;
+            case "evening":   return "android.resource://" + pkg + "/" + R.raw.adhkar_evening;
+            case "sleep":     return "android.resource://" + pkg + "/" + R.raw.adhkar_sleep;
+            case "wakeup":    return "android.resource://" + pkg + "/" + R.raw.adhkar_wakeup;
+            case "afterSalah": return "android.resource://" + pkg + "/" + R.raw.adhkar_after_salah;
+            default:          return null;
         }
-        if (resId == 0) return;
-        String uri = "android.resource://" + getPackageName() + "/" + resId;
-        AdhkarPlaybackService.play(this, uri, d.title);
     }
-
-
 
     private void onTap() {
         DhikrItem d = items.get(idx);
         currentCount++;
-        btnTap.setText(String.valueOf(currentCount));
+        txtCounter.setText(String.valueOf(currentCount));
         vibrate(40);
         if (currentCount >= d.count) {
             vibrate(180);

@@ -55,10 +55,10 @@ public class AudioDownloader {
         }
         // ثانياً: استخدم ملفات raw المدمجة حسب نوع الذكر
         if (url.contains("morning") || url.contains("sabah")) {
-            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_morning;
+            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.dhikr_75;
         }
         if (url.contains("evening") || url.contains("masa")) {
-            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_evening;
+            return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.dhikr_75;
         }
         if (url.contains("sleep") || url.contains("nawm")) {
             return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_sleep;
@@ -67,7 +67,7 @@ public class AudioDownloader {
             return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_wakeup;
         }
         // إذا ما نطبق أي حالة، استخدم أذكار الصباح كافتراضي
-        return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.adhkar_morning;
+        return "android.resource://" + ctx.getPackageName() + "/" + com.salah.app.R.raw.dhikr_75;
     }
 
     /** Collects every audioUrl from every category in adhkar.json + adhan voices. */

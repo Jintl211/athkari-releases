@@ -67,8 +67,8 @@ public class AthkarAlarmReceiver extends BroadcastReceiver {
 
     private int getSoundRes(String type) {
         switch (type) {
-            case "morning": return R.raw.adhkar_morning;
-            case "evening": return R.raw.adhkar_evening;
+            case "morning": return R.raw.dhikr_75;
+            case "evening": return R.raw.dhikr_75;
             case "sleep":   return R.raw.adhkar_sleep;
             default:        return 0;
         }
