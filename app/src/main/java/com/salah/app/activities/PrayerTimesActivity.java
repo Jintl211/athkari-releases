@@ -22,6 +22,9 @@ import java.util.Locale;
 public class PrayerTimesActivity extends AppCompatActivity {
 
     private TextView txtFajr, txtDhuhr, txtAsr, txtMaghrib, txtIsha;
+    private TextView txtSunriseTime, txtCountdown;
+    private android.os.Handler countdownHandler;
+    private long nextPrayerMillis = 0;
     private TextView txtFajrTime, txtDhuhrTime, txtAsrTime, txtMaghribTime, txtIshaTime;
     private TextView txtSunrise, txtNextPrayerName, txtNextPrayerTime;
     private TextView txtStatus;
@@ -60,7 +63,9 @@ public class PrayerTimesActivity extends AppCompatActivity {
         txtAsrTime      = findViewById(R.id.txt_asr_time);
         txtMaghribTime  = findViewById(R.id.txt_maghrib_time);
         txtIshaTime     = findViewById(R.id.txt_isha_time);
-        txtSunrise      = findViewById(R.id.txt_sunrise);
+        // txtSunrise removed
+        txtSunriseTime  = findViewById(R.id.txt_sunrise_time);
+        txtCountdown    = findViewById(R.id.txt_countdown);
         txtNextPrayerName = findViewById(R.id.txt_next_prayer_name);
         txtNextPrayerTime = findViewById(R.id.txt_next_prayer_time);
         txtStatus       = findViewById(R.id.txt_status);
@@ -145,15 +150,45 @@ public class PrayerTimesActivity extends AppCompatActivity {
                     txtIsha.setText("العشاء");
                     if (txtIshaTime != null) txtIshaTime.setText(t);
                     break;
+                case SUNRISE:
+                    if (txtSunriseTime != null) txtSunriseTime.setText(t);
+                    break;
             }
-            if (pt.time.getTime() > now && nextPrayer == null) {
+            if (pt.prayer != PrayerTime.Prayer.SUNRISE && pt.time.getTime() > now && nextPrayer == null) {
                 nextPrayer = pt;
             }
         }
         if (nextPrayer != null && txtNextPrayerName != null) {
-            txtNextPrayerName.setText(nextPrayer.getArabicName());
+            txtNextPrayerName.setText("الصلاة القادمة: " + nextPrayer.getArabicName());
             txtNextPrayerTime.setText(tf.format(nextPrayer.time));
+            nextPrayerMillis = nextPrayer.time.getTime();
+            startCountdown();
         }
+    }
+
+    private void startCountdown() {
+        if (countdownHandler != null) countdownHandler.removeCallbacksAndMessages(null);
+        countdownHandler = new android.os.Handler(getMainLooper());
+        countdownHandler.post(new Runnable() {
+            @Override public void run() {
+                if (txtCountdown == null || nextPrayerMillis == 0) return;
+                long diff = nextPrayerMillis - System.currentTimeMillis();
+                if (diff <= 0) {
+                    txtCountdown.setText("حان وقت الصلاة");
+                    return;
+                }
+                long h = diff / 3600000;
+                long m = (diff % 3600000) / 60000;
+                long s = (diff % 60000) / 1000;
+                txtCountdown.setText(String.format("%02d:%02d:%02d", h, m, s));
+                countdownHandler.postDelayed(this, 1000);
+            }
+        });
+    }
+
+    @Override protected void onDestroy() {
+        if (countdownHandler != null) countdownHandler.removeCallbacksAndMessages(null);
+        super.onDestroy();
     }
 
     private Location getDefaultLocation(PrayerApiClient.City city) {

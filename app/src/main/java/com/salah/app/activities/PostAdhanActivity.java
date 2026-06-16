@@ -48,9 +48,9 @@ public class PostAdhanActivity extends AppCompatActivity {
             body.setText(list.get(0).text);
             audioUrl = list.get(0).audioUrl;
         }
-        if (audioUrl != null && !audioUrl.isEmpty()) {
-            AdhkarPlaybackService.play(this, audioUrl, getString(R.string.dua_after_adhan));
-        }
+        // تشغيل الصوت المحلي دائماً
+        String localAudio = "android.resource://" + getPackageName() + "/" + R.raw.dua_after_adhan;
+        AdhkarPlaybackService.play(this, localAudio, getString(R.string.dua_after_adhan));
 
         MaterialButton btnClose = findViewById(R.id.btn_close_post);
         btnClose.setOnClickListener(v -> {

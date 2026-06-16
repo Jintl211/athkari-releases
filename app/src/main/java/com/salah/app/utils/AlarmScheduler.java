@@ -14,6 +14,7 @@ import com.salah.app.models.PrayerTime;
 import com.salah.app.models.UserSettings;
 import com.salah.app.receivers.AthkarAlarmReceiver;
 import com.salah.app.receivers.PrayerAlarmReceiver;
+import com.salah.app.receivers.PrePrayerReceiver;
 
 import java.util.Calendar;
 import java.util.List;
@@ -110,6 +111,20 @@ public class AlarmScheduler {
 
     public static void schedulePrayer(Context ctx, PrayerTime p) {
         if (p.time.getTime() <= System.currentTimeMillis()) return;
+
+        // جدولة تنبيه قبل الصلاة بـ 10 دقائق
+        long prePrayerTime = p.time.getTime() - (10 * 60 * 1000);
+        if (prePrayerTime > System.currentTimeMillis()) {
+            Intent preIntent = new Intent(ctx, PrePrayerReceiver.class);
+            preIntent.setAction("com.salah.app.PRE_PRAYER");
+            preIntent.putExtra(PrePrayerReceiver.EXTRA_PRAYER_AR, p.getArabicName());
+            preIntent.putExtra(PrePrayerReceiver.EXTRA_MINUTES, 10);
+            PendingIntent prePi = PendingIntent.getBroadcast(
+                ctx, requestCodeForPrayer(p.prayer.id) + 100, preIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+            );
+            setExact(ctx, prePrayerTime, prePi);
+        }
 
         Intent intent = new Intent(ctx, PrayerAlarmReceiver.class);
         intent.setAction(ACTION_PRAYER);

@@ -212,6 +212,53 @@ public class SettingsActivity extends AppCompatActivity {
             builder.show();
         });
 
+        MaterialButton btnPrivacy = findViewById(R.id.btn_privacy);
+        if (btnPrivacy != null) btnPrivacy.setOnClickListener(v -> {
+            android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(this);
+            b.setView(getLayoutInflater().inflate(R.layout.dialog_privacy, null));
+            b.setPositiveButton("حسناً", null);
+            b.show();
+        });
+
+        // أزرار تواصل معنا
+        MaterialButton btnEmail = findViewById(R.id.btn_email);
+        if (btnEmail != null) btnEmail.setOnClickListener(v -> {
+            try {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(android.net.Uri.parse("mailto:jintl850@gmail.com"));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "تواصل من تطبيق أذكاري");
+                startActivity(Intent.createChooser(emailIntent, "إرسال بريد إلكتروني"));
+            } catch (Exception e) {
+                Toast.makeText(this, "لا يوجد تطبيق بريد إلكتروني", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        MaterialButton btnReportBug = findViewById(R.id.btn_report_bug);
+        if (btnReportBug != null) btnReportBug.setOnClickListener(v -> {
+            try {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(android.net.Uri.parse("mailto:jintl850@gmail.com"));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "بلاغ عن خطأ - تطبيق أذكاري");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "وصف الخطأ:\n\n");
+                startActivity(Intent.createChooser(emailIntent, "بلّغ عن خطأ"));
+            } catch (Exception e) {
+                Toast.makeText(this, "لا يوجد تطبيق بريد إلكتروني", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        MaterialButton btnSuggest = findViewById(R.id.btn_suggest);
+        if (btnSuggest != null) btnSuggest.setOnClickListener(v -> {
+            try {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(android.net.Uri.parse("mailto:jintl850@gmail.com"));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "اقتراح ميزة جديدة - تطبيق أذكاري");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "الميزة المقترحة:\n\n");
+                startActivity(Intent.createChooser(emailIntent, "اقتراح ميزة"));
+            } catch (Exception e) {
+                Toast.makeText(this, "لا يوجد تطبيق بريد إلكتروني", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // ===== حفظ =====
         MaterialButton btnSave = findViewById(R.id.btn_save);
         btnSave.setOnClickListener(v -> {

@@ -76,8 +76,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="04:10 ص"
-                android:textSize="22sp"
-                android:textColor="#ffffff"/>
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txt_countdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00:00"
+                android:textSize="36sp"
+                android:textColor="#ffd700"
+                android:textStyle="bold"
+                android:fontFamily="monospace"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -127,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="الفجر"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
                     android:gravity="end"
                     android:layout_marginEnd="12dp"/>
@@ -135,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="04:10 ص"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffd700"/>
             </LinearLayout>
 
@@ -160,15 +171,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="الشروق"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
                     android:gravity="end"
                     android:layout_marginEnd="12dp"/>
-                <TextView android:id="@+id/txt_sunrise"
+                <TextView android:id="@+id/txt_sunrise_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="05:33 ص"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffd700"/>
             </LinearLayout>
 
@@ -193,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="الظهر"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
                     android:gravity="end"
                     android:layout_marginEnd="12dp"/>
@@ -201,7 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12:21 م"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffd700"/>
             </LinearLayout>
 
@@ -226,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="العصر"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
                     android:gravity="end"
                     android:layout_marginEnd="12dp"/>
@@ -234,7 +245,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="03:40 م"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffd700"/>
             </LinearLayout>
 
@@ -259,7 +270,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="المغرب"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
                     android:gravity="end"
                     android:layout_marginEnd="12dp"/>
@@ -267,7 +278,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="07:03 م"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffd700"/>
             </LinearLayout>
 
@@ -292,7 +303,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="العشاء"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
                     android:gravity="end"
                     android:layout_marginEnd="12dp"/>
@@ -300,7 +311,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="08:33 م"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffd700"/>
             </LinearLayout>
 

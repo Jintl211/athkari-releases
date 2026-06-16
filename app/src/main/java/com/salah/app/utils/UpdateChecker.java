@@ -85,10 +85,28 @@ public class UpdateChecker {
     }
 
     private static void startDownload(Activity activity, String downloadUrl, String version) {
-        activity.runOnUiThread(() -> {
+        new Thread(() -> {
             try {
-                DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
-                Uri uri = Uri.parse(downloadUrl);
+                // حل الـ redirect من GitHub
+                String resolvedUrl = downloadUrl;
+                java.net.HttpURLConnection con = (java.net.HttpURLConnection)
+                    new java.net.URL(downloadUrl).openConnection();
+                con.setInstanceFollowRedirects(false);
+                con.setConnectTimeout(10000);
+                con.setReadTimeout(10000);
+                con.setRequestProperty("User-Agent", "Mozilla/5.0");
+                int code = con.getResponseCode();
+                String location = con.getHeaderField("Location");
+                con.disconnect();
+                if ((code == 301 || code == 302 || code == 303 || code == 307 || code == 308)
+                        && location != null && !location.isEmpty()) {
+                    resolvedUrl = location;
+                }
+                final String finalUrl = resolvedUrl;
+                activity.runOnUiThread(() -> {
+                    try {
+                        DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
+                        Uri uri = Uri.parse(finalUrl);
                         DownloadManager.Request request = new DownloadManager.Request(uri);
                         request.setTitle("تحديث أذكاري " + version);
                         request.setDescription("جارٍ تنزيل التحديث...");
@@ -122,9 +140,14 @@ public class UpdateChecker {
                             }
                         };
                         activity.registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), Context.RECEIVER_EXPORTED);
+                    } catch (Exception e) {
+                        Toast.makeText(activity, "خطأ: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             } catch (Exception e) {
-                Toast.makeText(activity, "خطأ: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                activity.runOnUiThread(() ->
+                    Toast.makeText(activity, "خطأ في التحضير: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             }
-        });
+        }).start();
     }
 }

@@ -153,60 +153,132 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_battery"
                 app:cornerRadius="12dp"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginVertical="16dp"/>
+
+            <!-- قسم أذكاري -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="أذكاري"
+                android:textColor="#ffd700"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="12dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="حول التطبيق"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_check_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="🔄 التحقق من التحديثات"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="📜 شروط الاستخدام والخصوصية"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="نبذة عن التطبيق"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider" android:layout_marginVertical="8dp"/>
+
+            <!-- قسم تواصل معنا -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="تواصل معنا"
+                android:textColor="#ffd700"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="12dp"
+                android:paddingTop="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="✉️ راسلنا عبر البريد الإلكتروني"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_report_bug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="🐛 بلّغ عن خطأ"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_suggest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="💡 اقترح ميزة جديدة"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_tiktok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="🎵 للمزيد من المحتوى الديني"
+                android:textColor="@color/gold"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"/>
+
         </LinearLayout>
     </ScrollView>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_about"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="حول التطبيق"
-        android:textColor="@color/gold"
-        app:strokeColor="@color/gold"
-        app:strokeWidth="1dp"
-        app:cornerRadius="14dp"
-        style="@style/Widget.Material3.Button.OutlinedButton"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_tiktok"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="🎵 للمزيد من المحتوى الديني"
-        android:textColor="@color/gold"
-        app:strokeColor="@color/gold"
-        app:strokeWidth="1dp"
-        app:cornerRadius="14dp"
-        style="@style/Widget.Material3.Button.OutlinedButton"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_check_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="🔄 التحقق من التحديثات"
-        android:textColor="@color/gold"
-        app:strokeColor="@color/gold"
-        app:strokeWidth="1dp"
-        app:cornerRadius="14dp"
-        style="@style/Widget.Material3.Button.OutlinedButton"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="نبذة عن التطبيق"
-        android:textColor="@color/gold"
-        app:strokeColor="@color/gold"
-        app:strokeWidth="1dp"
-        app:cornerRadius="14dp"
-        style="@style/Widget.Material3.Button.OutlinedButton"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save"

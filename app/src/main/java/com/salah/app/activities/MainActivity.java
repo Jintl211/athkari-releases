@@ -42,6 +42,7 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import com.salah.app.utils.PrayerTimesCalculator;
+import com.salah.app.views.RealisticClockView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     // ===== Prayer Times =====
     private TextView txtCity, txtDate, txtNextPrayer, txtCountdown;
+    private RealisticClockView analogClock;
     private Handler countdownHandler;
 
     // ===== Tasbih =====
@@ -143,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private void initBottomNav() {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
         if (bottomNav == null) return;
+        bottomNav.setItemIconTintList(null);
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == currentTab && id != R.id.nav_settings) return true;
@@ -157,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         txtDate       = findViewById(R.id.txt_date);
         txtNextPrayer = findViewById(R.id.txt_next_prayer);
         txtCountdown  = findViewById(R.id.txt_countdown);
+        analogClock   = findViewById(R.id.analog_clock);
     }
 
     private void displayPrayerTimes() {
@@ -171,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 String t = tf.format(pt.time);
                 switch (pt.prayer.id) {
                     case "fajr":    setPrayer(R.id.txt_fajr, R.id.txt_fajr_val, "الفجر", t); break;
+                    case "sunrise": setPrayer(R.id.txt_sunrise_label, R.id.txt_sunrise_val, "الشروق", t); break;
                     case "dhuhr":   setPrayer(R.id.txt_dhuhr, R.id.txt_dhuhr_val, "الظهر", t); break;
                     case "asr":     setPrayer(R.id.txt_asr, R.id.txt_asr_val, "العصر", t); break;
                     case "maghrib": setPrayer(R.id.txt_maghrib, R.id.txt_maghrib_val, "المغرب", t); break;
@@ -199,14 +204,65 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         try {
             Location loc = PreferencesManager.loadLocation(this);
             if (loc == null) loc = new Location(21.4225, 39.8262, "مكة المكرمة", "Asia/Riyadh");
-            PrayerTime next = PrayerTimesCalculator.nextPrayer(loc, PreferencesManager.load(this));
+            UserSettings s = PreferencesManager.load(this);
+            PrayerTime next = PrayerTimesCalculator.nextPrayer(loc, s);
             if (next == null) return;
-            long diff = next.time.getTime() - System.currentTimeMillis();
-            if (diff < 0) return;
+            long nowMs = System.currentTimeMillis();
+            long diff = next.time.getTime() - nowMs;
+            if (diff <= 0) return;
+
+            // حساب نسبة التقدم بين الصلاة السابقة والقادمة لتلوين القوس على الساعة
+            if (analogClock != null) {
+                long prevMs = 0;
+                List<PrayerTime> todayTimes = PrayerTimesCalculator.getTodayTimes(loc, s);
+                for (PrayerTime p : todayTimes) {
+                    if (p.prayer == PrayerTime.Prayer.SUNRISE) continue;
+                    if (p.time.getTime() < next.time.getTime() && p.time.getTime() > prevMs) {
+                        prevMs = p.time.getTime();
+                    }
+                }
+                if (prevMs == 0) {
+                    // الصلاة القادمة هي فجر اليوم/الغد ولا توجد صلاة سابقة اليوم: استخدم عشاء الأمس تقريباً (24 ساعة قبل القادمة)
+                    prevMs = next.time.getTime() - 24L * 60 * 60 * 1000;
+                }
+                long totalSpan = next.time.getTime() - prevMs;
+                float progress = totalSpan > 0 ? (float) (nowMs - prevMs) / (float) totalSpan : 0f;
+                analogClock.setProgress(progress);
+            }
             long h = diff/3600000, m=(diff%3600000)/60000, sec=(diff%60000)/1000;
+            String cdText = String.format("%02d:%02d:%02d", h, m, sec);
+
+            // إخفاء كل العدادات أولاً
+            int[] cdIds = {R.id.txt_fajr_cd, R.id.txt_sunrise_cd, R.id.txt_dhuhr_cd,
+                           R.id.txt_asr_cd, R.id.txt_maghrib_cd, R.id.txt_isha_cd};
+            for (int id : cdIds) {
+                android.widget.TextView v = findViewById(id);
+                if (v != null) v.setVisibility(android.view.View.GONE);
+            }
+
+            // إظهار العداد جنب الصلاة القادمة فقط
+            int cdId = 0;
+            switch (next.prayer.id) {
+                case "fajr":    cdId = R.id.txt_fajr_cd; break;
+                case "sunrise": cdId = R.id.txt_sunrise_cd; break;
+                case "dhuhr":   cdId = R.id.txt_dhuhr_cd; break;
+                case "asr":     cdId = R.id.txt_asr_cd; break;
+                case "maghrib": cdId = R.id.txt_maghrib_cd; break;
+                case "isha":    cdId = R.id.txt_isha_cd; break;
+            }
+            if (cdId != 0) {
+                android.widget.TextView cdView = findViewById(cdId);
+                if (cdView != null) {
+                    cdView.setText("-" + cdText);
+                    cdView.setVisibility(android.view.View.VISIBLE);
+                }
+            }
+
             if (txtNextPrayer!=null) txtNextPrayer.setText("الصلاة القادمة: " + next.getArabicName());
-            if (txtCountdown!=null) txtCountdown.setText(String.format(Locale.getDefault(),"%02d:%02d:%02d",h,m,sec));
-        } catch (Exception ignored) {}
+            if (txtCountdown!=null) txtCountdown.setText(cdText);
+        } catch (Exception e) {
+            android.util.Log.e("COUNTDOWN", "خطأ: " + e.getMessage());
+        }
     }
 
     // =================== AZKAR ===================

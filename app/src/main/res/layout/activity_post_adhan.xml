@@ -7,17 +7,7 @@
     android:background="@color/bg_primary"
     android:layoutDirection="rtl">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/islamic_pattern"
-        android:alpha="0.12"
-        android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="pattern"/>
+
 
     <ImageView
         android:layout_width="160dp"

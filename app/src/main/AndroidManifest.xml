@@ -139,5 +139,7 @@
         </provider>
 
             <activity android:name=".activities.AudioDuasActivity" android:screenOrientation="portrait"/>
+            <receiver android:name=".receivers.PrePrayerReceiver" android:exported="false"/>
+        <receiver android:name=".receivers.DuhaAlarmReceiver" android:exported="false"/>
     </application>
 </manifest>
